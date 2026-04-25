@@ -1,0 +1,2328 @@
+
+      <html xmlns:o='urn:schemas-microsoft-com:office:office'
+            xmlns:w='urn:schemas-microsoft-com:office:word'
+            xmlns='http://www.w3.org/TR/REC-html40'>
+      <head>
+          <meta charset="utf-8">
+          <title>Exported Document</title>
+          <style>
+              body { font-family: Arial, sans-serif; }
+          </style>
+      </head>
+      <body>
+          <h1 id="githubvsgitlabidevscodestudentnotes">GitHub vs GitLab, IDE &amp; VS Code - Student Notes</h1>
+<h2 id="tableofcontents">📚 Table of Contents</h2>
+<ol>
+<li>GitHub vs GitLab</li>
+<li>GitLab CE vs GitLab EE</li>
+<li>Merging Branches in GitLab</li>
+<li>Resolving Conflicts</li>
+<li>Introduction to IDE</li>
+<li>Visual Studio Code Installation</li>
+<li>Auto Git in VS Code</li>
+<li>Best Practices</li>
+</ol>
+<hr />
+<h2 id="1githubvsgitlab">1️⃣ GitHub vs GitLab</h2>
+<h3 id="whataregithubandgitlab"><strong>What are GitHub and GitLab?</strong></h3>
+<p><strong>Definition</strong>: 
+Both <strong>GitHub</strong> and <strong>GitLab</strong> are web-based platforms that provide Git repository hosting, collaboration tools, and DevOps capabilities. They serve similar purposes but with different features and philosophies.</p>
+<h3 id="simpleanalogy"><strong>Simple Analogy</strong> 🏢</h3>
+<pre><code>Think of them as Office Buildings:
+
+GitHub:
+├─ Like WeWork (shared office space)
+├─ Everyone uses the same building
+├─ Managed by landlord (Microsoft)
+└─ Great for networking
+
+GitLab:
+├─ Like owning your building
+├─ Can customize everything
+├─ Self-managed or cloud
+└─ Complete control
+</code></pre>
+<hr />
+<h3 id="detailedcomparison"><strong>Detailed Comparison</strong></h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│              GITHUB vs GITLAB COMPARISON                    │
+└─────────────────────────────────────────────────────────────┘
+
+ASPECT            │ GITHUB                │ GITLAB
+──────────────────┼───────────────────────┼────────────────────
+OWNERSHIP         │ Microsoft             │ GitLab Inc.
+──────────────────┼───────────────────────┼────────────────────
+DEPLOYMENT        │ Cloud only            │ Cloud + Self-hosted
+                  │ github.com            │ gitlab.com or own server
+──────────────────┼───────────────────────┼────────────────────
+MARKET SHARE      │ ~70% (largest)        │ ~20%
+──────────────────┼───────────────────────┼────────────────────
+FOCUS             │ Social coding         │ Complete DevOps
+                  │ Community             │ Pipeline automation
+──────────────────┼───────────────────────┼────────────────────
+PRICING           │ Free public repos     │ Free unlimited
+                  │ Free private repos    │ public + private
+                  │ Team: $4/user/month   │ Premium: $29/user/month
+──────────────────┼───────────────────────┼────────────────────
+CI/CD             │ GitHub Actions        │ Built-in GitLab CI/CD
+                  │ (added later)         │ (native from start)
+──────────────────┼───────────────────────┼────────────────────
+REPOSITORY        │ Pull Requests         │ Merge Requests
+MODEL             │                       │
+──────────────────┼───────────────────────┼────────────────────
+WIKI              │ Separate wiki tab     │ Integrated wiki
+──────────────────┼───────────────────────┼────────────────────
+ISSUE TRACKING    │ Basic issues          │ Advanced issues
+                  │                       │ (weights, epics, boards)
+──────────────────┼───────────────────────┼────────────────────
+CODE REVIEW       │ Excellent             │ Excellent
+                  │ Line comments         │ Line + file comments
+──────────────────┼───────────────────────┼────────────────────
+CONTAINER         │ GitHub Packages       │ Container Registry
+REGISTRY          │                       │ (built-in)
+──────────────────┼───────────────────────┼────────────────────
+SECURITY          │ Dependabot            │ Security Dashboard
+                  │ Code scanning         │ SAST, DAST built-in
+──────────────────┼───────────────────────┼────────────────────
+KUBERNETES        │ Via Actions           │ Native integration
+INTEGRATION       │                       │ Auto DevOps
+──────────────────┼───────────────────────┼────────────────────
+PROJECT           │ Projects (basic)      │ Advanced planning
+MANAGEMENT        │ GitHub Projects Beta  │ Epics, Milestones, Boards
+──────────────────┼───────────────────────┼────────────────────
+IMPORT/EXPORT     │ Limited               │ Full project export
+──────────────────┼───────────────────────┼────────────────────
+SELF-HOSTING      │ ❌ No                 │ ✅ Yes (CE &amp; EE)
+──────────────────┼───────────────────────┼────────────────────
+OPEN SOURCE       │ Platform: ❌          │ Platform: ✅ (CE)
+                  │ Projects: ✅          │ Projects: ✅
+──────────────────┼───────────────────────┼────────────────────
+API               │ REST, GraphQL         │ REST, GraphQL
+──────────────────┼───────────────────────┼────────────────────
+LEARNING CURVE    │ Easy (simpler)        │ Moderate (more features)
+──────────────────┼───────────────────────┼────────────────────
+COMMUNITY         │ Massive (90M+ users)  │ Growing (30M+ users)
+──────────────────┼───────────────────────┼────────────────────
+MARKETPLACE       │ Large (Actions)       │ Smaller
+──────────────────┼───────────────────────┼────────────────────
+IDEAL FOR         │ Open source           │ Enterprise DevOps
+                  │ Portfolio             │ Complete CI/CD
+                  │ Social coding         │ Self-hosted needs
+</code></pre>
+<hr />
+<h3 id="featurecomparison"><strong>Feature Comparison</strong></h3>
+<h4 id="repositoryfeatures"><strong>Repository Features</strong></h4>
+<pre><code>GITHUB:
+───────
+✅ Pull Requests (PR)
+✅ Code review
+✅ Protected branches
+✅ Draft PRs
+✅ Auto-merge
+✅ GitHub Pages (static hosting)
+✅ GitHub Gists (code snippets)
+✅ Discussions
+✅ Sponsors
+
+GITLAB:
+───────
+✅ Merge Requests (MR)
+✅ Code review
+✅ Protected branches
+✅ Draft MRs
+✅ Auto-merge
+✅ GitLab Pages (static hosting)
+✅ Snippets
+✅ Built-in wiki per project
+✅ Design management
+✅ File locking
+</code></pre>
+<hr />
+<h4 id="cicdfeatures"><strong>CI/CD Features</strong></h4>
+<pre><code>GITHUB ACTIONS:
+───────────────
+├─ YAML-based workflows
+├─ Matrix builds
+├─ Reusable workflows
+├─ 2,000 free minutes/month (public)
+├─ Large marketplace
+└─ Integrated with GitHub ecosystem
+
+GITLAB CI/CD:
+─────────────
+├─ .gitlab-ci.yml
+├─ Auto DevOps (automatic pipeline)
+├─ Pipeline visualization
+├─ 400 free minutes/month (SaaS)
+├─ Unlimited for self-hosted
+├─ Multi-project pipelines
+├─ Parent-child pipelines
+└─ Complete DevOps lifecycle
+</code></pre>
+<hr />
+<h4 id="securityfeatures"><strong>Security Features</strong></h4>
+<pre><code>GITHUB:
+───────
+├─ Dependabot (dependency alerts)
+├─ Code scanning
+├─ Secret scanning
+├─ Security advisories
+└─ Require 2FA for organizations
+
+GITLAB:
+───────
+├─ Dependency scanning
+├─ SAST (Static Application Security Testing)
+├─ DAST (Dynamic Application Security Testing)
+├─ Container scanning
+├─ License compliance
+├─ Security Dashboard
+└─ Vulnerability management
+</code></pre>
+<hr />
+<h3 id="visualcomparison"><strong>Visual Comparison</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│                    GITHUB STRUCTURE                      │
+└──────────────────────────────────────────────────────────┘
+
+    ┌─────────────┐
+    │   GitHub    │ (Cloud only)
+    │  Platform   │
+    └──────┬──────┘
+           │
+    ┌──────┴──────────────────┐
+    │                         │
+┌───▼────┐              ┌─────▼─────┐
+│ Repos  │              │  Actions  │
+│ Issues │              │  Packages │
+│   PRs  │              │   Pages   │
+└────────┘              └───────────┘
+    │
+    │ GitHub Desktop
+    │ GitHub CLI
+    ▼
+Your Computer
+
+
+┌──────────────────────────────────────────────────────────┐
+│                    GITLAB STRUCTURE                      │
+└──────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────────────┐
+    │       GitLab Options        │
+    └──────┬──────────────────┬───┘
+           │                  │
+    ┌──────▼──────┐    ┌──────▼──────┐
+    │ GitLab.com  │    │ Self-Hosted │
+    │   (Cloud)   │    │ (Your Server)│
+    └──────┬──────┘    └──────┬──────┘
+           │                  │
+           └────────┬─────────┘
+                    │
+         ┌──────────┴──────────────┐
+         │                         │
+    ┌────▼────┐              ┌─────▼──────┐
+    │ Repos   │              │  CI/CD     │
+    │ Issues  │              │  Registry  │
+    │   MRs   │              │  Wiki      │
+    │ Boards  │              │  Security  │
+    └─────────┘              └────────────┘
+         │
+         ▼
+    Your Computer
+</code></pre>
+<hr />
+<h3 id="whentochoosewhich"><strong>When to Choose Which?</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│                 DECISION GUIDE                           │
+└──────────────────────────────────────────────────────────┘
+
+CHOOSE GITHUB IF:
+─────────────────
+✅ Building open source projects
+✅ Want largest developer community
+✅ Portfolio/personal projects
+✅ Need extensive marketplace (Actions)
+✅ Prefer simplicity
+✅ Social coding (stars, followers)
+✅ Using GitHub Pages for blog/portfolio
+✅ Learning Git (easier interface)
+
+Examples:
+├─ Personal portfolio
+├─ Open source library
+├─ Student projects
+├─ Community-driven projects
+└─ Resume building
+
+
+CHOOSE GITLAB IF:
+─────────────────
+✅ Need self-hosted solution
+✅ Enterprise DevOps requirements
+✅ Complete CI/CD out-of-the-box
+✅ Advanced project management
+✅ Data sovereignty concerns
+✅ Integrated security scanning
+✅ Need unlimited CI/CD minutes
+✅ Want single application for DevOps
+
+Examples:
+├─ Enterprise applications
+├─ Government projects
+├─ Regulated industries
+├─ Companies with own infrastructure
+└─ Complete DevOps pipeline needs
+
+
+BOTH ARE GREAT FOR:
+───────────────────
+✅ Version control
+✅ Collaboration
+✅ Code review
+✅ Issue tracking
+✅ Git workflows
+✅ Team projects
+</code></pre>
+<hr />
+<h3 id="migrationbetweenplatforms"><strong>Migration Between Platforms</strong></h3>
+<pre><code class="bash language-bash"># Migrate from GitHub to GitLab
+# (and vice versa)
+
+OPTION 1: Import Project
+────────────────────────
+1. GitLab → New Project → Import Project
+2. Choose "GitHub"
+3. Authenticate with GitHub
+4. Select repositories to import
+5. Click "Import"
+
+Imports:
+├─ Repository and branches
+├─ Issues
+├─ Pull/Merge requests
+├─ Wiki
+└─ Milestones
+
+
+OPTION 2: Manual Migration
+──────────────────────────
+# Clone from GitHub
+git clone https://github.com/user/repo.git
+cd repo
+
+# Add GitLab as new remote
+git remote add gitlab https://gitlab.com/user/repo.git
+
+# Push all branches
+git push gitlab --all
+
+# Push all tags
+git push gitlab --tags
+
+
+OPTION 3: Mirror Repository
+────────────────────────────
+# Keep both in sync
+GitLab → Settings → Repository → Mirroring repositories
+Pull/Push from GitHub
+</code></pre>
+<hr />
+<h2 id="2gitlabcevsgitlabee">2️⃣ GitLab CE vs GitLab EE</h2>
+<h3 id="whatareceandee"><strong>What are CE and EE?</strong></h3>
+<p><strong>Definitions</strong>:</p>
+<ul>
+<li><strong>GitLab CE (Community Edition)</strong>: Free, open-source version with core features</li>
+<li><strong>GitLab EE (Enterprise Edition)</strong>: Paid version with advanced features for enterprises</li>
+</ul>
+<h3 id="simpleanalogy-1"><strong>Simple Analogy</strong> 🏪</h3>
+<pre><code>GitLab Editions = Software Tiers
+
+Community Edition (CE):
+├─ Like free version of software
+├─ Core features included
+├─ Perfect for small teams
+└─ Open source
+
+Enterprise Edition (EE):
+├─ Like premium version
+├─ All CE features + advanced tools
+├─ For large organizations
+└─ Paid tiers
+</code></pre>
+<hr />
+<h3 id="detailedcomparison-1"><strong>Detailed Comparison</strong></h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│           GITLAB CE vs EE COMPARISON                        │
+└─────────────────────────────────────────────────────────────┘
+
+FEATURE                  │ CE (Free)    │ EE Premium   │ EE Ultimate
+─────────────────────────┼──────────────┼──────────────┼─────────────
+PRICING                  │ $0           │ $29/user/mo  │ $99/user/mo
+─────────────────────────┼──────────────┼──────────────┼─────────────
+SOURCE CODE              │ Open Source  │ Source Avail.│ Source Avail.
+─────────────────────────┼──────────────┼──────────────┼─────────────
+SELF-HOSTING             │ ✅ Yes       │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+USERS                    │ Unlimited    │ Unlimited    │ Unlimited
+─────────────────────────┼──────────────┼──────────────┼─────────────
+REPOSITORIES             │ Unlimited    │ Unlimited    │ Unlimited
+─────────────────────────┼──────────────┼──────────────┼─────────────
+CI/CD                    │ ✅ Yes       │ ✅ Yes       │ ✅ Yes
+CI/CD MINUTES (SaaS)     │ 400/month    │ 10,000/month │ 50,000/month
+─────────────────────────┼──────────────┼──────────────┼─────────────
+ISSUES &amp; MRs             │ ✅ Basic     │ ✅ Advanced  │ ✅ Advanced
+─────────────────────────┼──────────────┼──────────────┼─────────────
+CODE REVIEW              │ ✅ Yes       │ ✅ Enhanced  │ ✅ Enhanced
+─────────────────────────┼──────────────┼──────────────┼─────────────
+WIKI                     │ ✅ Yes       │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+CONTAINER REGISTRY       │ ✅ Yes       │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+ISSUE BOARDS             │ ✅ 1 per proj│ ✅ Multiple  │ ✅ Multiple
+─────────────────────────┼──────────────┼──────────────┼─────────────
+EPICS                    │ ❌ No        │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+ROADMAPS                 │ ❌ No        │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+CODE OWNERS              │ ❌ No        │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+MERGE REQUEST APPROVALS  │ ✅ Basic     │ ✅ Advanced  │ ✅ Advanced
+MULTIPLE APPROVERS       │ ❌ No        │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+SECURITY SCANNING        │ ✅ Basic     │ ✅ SAST,     │ ✅ All scans
+                         │              │    Dependency│    DAST, Fuzz
+─────────────────────────┼──────────────┼──────────────┼─────────────
+SECURITY DASHBOARD       │ ❌ No        │ ✅ Project   │ ✅ Instance
+─────────────────────────┼──────────────┼──────────────┼─────────────
+COMPLIANCE FRAMEWORK     │ ❌ No        │ ❌ No        │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+AUDIT EVENTS             │ ❌ No        │ ✅ Yes       │ ✅ Enhanced
+─────────────────────────┼──────────────┼──────────────┼─────────────
+LDAP INTEGRATION         │ ✅ Basic     │ ✅ Advanced  │ ✅ Advanced
+─────────────────────────┼──────────────┼──────────────┼─────────────
+SAML SSO                 │ ❌ No        │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+GEO REPLICATION          │ ❌ No        │ ✅ Yes       │ ✅ Yes
+─────────────────────────┼──────────────┼──────────────┼─────────────
+SUPPORT                  │ Community    │ Business hrs │ 24/7
+─────────────────────────┼──────────────┼──────────────┼─────────────
+IDEAL FOR                │ Small teams  │ Medium teams │ Enterprise
+                         │ Startups     │ Departments  │ Large orgs
+</code></pre>
+<hr />
+<h3 id="featurebreakdown"><strong>Feature Breakdown</strong></h3>
+<h4 id="gitlabcecommunityedition"><strong>GitLab CE (Community Edition)</strong></h4>
+<pre><code>FREE FOREVER - CORE FEATURES:
+─────────────────────────────
+
+Version Control:
+├─ Unlimited public &amp; private repos
+├─ Branching &amp; merging
+├─ Code review
+├─ Protected branches
+└─ File locking
+
+CI/CD:
+├─ GitLab CI/CD (unlimited runners for self-hosted)
+├─ 400 CI/CD minutes/month (SaaS)
+├─ Auto DevOps
+├─ Kubernetes integration
+└─ Container Registry
+
+Collaboration:
+├─ Issues &amp; Merge Requests
+├─ Wiki per project
+├─ Snippets
+├─ 1 Issue Board per project
+├─ Labels &amp; milestones
+└─ Time tracking
+
+Security:
+├─ Dependency scanning
+├─ Container scanning
+├─ Static Application Security Testing (SAST)
+└─ Secret detection
+
+Other:
+├─ Pages (static site hosting)
+├─ REST &amp; GraphQL API
+├─ Webhooks
+└─ Import/Export projects
+
+Perfect for:
+✓ Individuals
+✓ Small teams
+✓ Startups
+✓ Open source projects
+✓ Learning DevOps
+</code></pre>
+<hr />
+<h4 id="gitlabeepremium"><strong>GitLab EE Premium</strong></h4>
+<pre><code>$29/USER/MONTH - ADDS:
+──────────────────────
+
+Project Management:
+├─ Multiple issue boards per project
+├─ Epics (group issues together)
+├─ Roadmaps
+├─ Issue weights
+├─ Burndown charts
+└─ Portfolio management
+
+Code Quality:
+├─ Code owners (require approval from specific users)
+├─ Multiple approvers for MRs
+├─ Approval rules
+├─ Merge request dependencies
+└─ Protected environments
+
+Security:
+├─ Dynamic Application Security Testing (DAST)
+├─ Dependency scanning in MRs
+├─ License compliance
+└─ Security dashboard (project level)
+
+Operations:
+├─ Geo replication (disaster recovery)
+├─ Advanced CI/CD
+├─ Multi-project pipelines
+└─ Environment-based deployments
+
+Authentication:
+├─ LDAP group sync
+├─ SAML SSO
+└─ Group-level SAML
+
+Support:
+├─ Business hours support
+├─ 4-hour response time
+└─ Priority bug fixes
+
+Perfect for:
+✓ Growing companies
+✓ Multiple teams
+✓ Need compliance features
+✓ Require advanced security
+</code></pre>
+<hr />
+<h4 id="gitlabeeultimate"><strong>GitLab EE Ultimate</strong></h4>
+<pre><code>$99/USER/MONTH - ADDS:
+──────────────────────
+
+Advanced Security:
+├─ Security Dashboard (instance-wide)
+├─ Vulnerability management
+├─ Compliance frameworks
+├─ Audit events (detailed)
+├─ Fuzz testing
+├─ Coverage-guided fuzzing
+└─ API security testing
+
+Enterprise Features:
+├─ Free guest users
+├─ Advanced CI/CD analytics
+├─ Value stream analytics
+├─ Productivity analytics
+├─ Insights
+└─ Requirements management
+
+Compliance:
+├─ Compliance pipelines
+├─ Compliance frameworks
+├─ Audit reports
+├─ Merge request approval policies
+└─ External status checks
+
+Support:
+├─ 24/7 support
+├─ 30-minute response time (critical)
+├─ Dedicated Customer Success Manager
+└─ Implementation services
+
+Perfect for:
+✓ Large enterprises
+✓ Regulated industries (finance, healthcare)
+✓ Need compliance &amp; governance
+✓ Mission-critical applications
+✓ 24/7 support required
+</code></pre>
+<hr />
+<h3 id="gitlabtiersvisualization"><strong>GitLab Tiers Visualization</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│               GITLAB FEATURE PYRAMID                     │
+└──────────────────────────────────────────────────────────┘
+
+                      ┌─────────────────┐
+                      │   ULTIMATE      │
+                      │  Compliance     │
+                      │  Security Mgmt  │
+                      │  24/7 Support   │
+                      └────────┬────────┘
+                               │ $99/user/mo
+              ┌────────────────┴────────────────┐
+              │         PREMIUM                 │
+              │  Epics, Roadmaps                │
+              │  Code Owners                    │
+              │  Geo Replication                │
+              │  Advanced Security              │
+              └────────┬────────────────────────┘
+                       │ $29/user/mo
+      ┌────────────────┴────────────────────────────┐
+      │              COMMUNITY (CE)                  │
+      │  Source Control                              │
+      │  CI/CD                                       │
+      │  Issue Tracking                              │
+      │  Code Review                                 │
+      │  Basic Security                              │
+      └──────────────────────────────────────────────┘
+      FREE
+
+
+Inheritance:
+────────────
+Ultimate includes Premium includes CE
+   ✓            ✓             ✓
+</code></pre>
+<hr />
+<h3 id="choosingtherightedition"><strong>Choosing the Right Edition</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│                 EDITION SELECTOR                         │
+└──────────────────────────────────────────────────────────┘
+
+START WITH CE IF:
+─────────────────
+✅ Individual developer
+✅ Team &lt; 10 people
+✅ Budget-conscious
+✅ Just need Git + CI/CD
+✅ Learning DevOps
+✅ Open source project
+
+Example: 3-person startup building MVP
+
+
+UPGRADE TO PREMIUM IF:
+──────────────────────
+✅ Team 10-100 people
+✅ Multiple projects
+✅ Need project planning (epics, roadmaps)
+✅ Code ownership important
+✅ Disaster recovery needed (Geo)
+✅ Need SSO/SAML
+
+Example: 50-person company with 3 development teams
+
+
+UPGRADE TO ULTIMATE IF:
+───────────────────────
+✅ Team 100+ people
+✅ Regulated industry
+✅ Compliance requirements
+✅ Need 24/7 support
+✅ Advanced security scanning
+✅ Portfolio management
+
+Example: Bank with 200 developers
+
+
+SELF-HOSTED vs SaaS:
+────────────────────
+Self-Hosted (CE/EE):
+├─ Install on your servers
+├─ Complete control
+├─ No CI/CD minute limits
+├─ Data stays in-house
+└─ You manage infrastructure
+
+SaaS (GitLab.com):
+├─ Managed by GitLab
+├─ No maintenance
+├─ Auto-updates
+├─ CI/CD minute limits apply
+└─ Quick to start
+</code></pre>
+<hr />
+<h2 id="3howtomergerepobranchesingitlab">3️⃣ How to Merge Repo Branches in GitLab</h2>
+<h3 id="whatismergingingitlab"><strong>What is Merging in GitLab?</strong></h3>
+<p><strong>Definition</strong>: 
+Merging in GitLab combines changes from one branch into another using <strong>Merge Requests (MR)</strong>, which is GitLab's equivalent of GitHub Pull Requests.</p>
+<hr />
+<h3 id="mergerequestworkflow"><strong>Merge Request Workflow</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│           GITLAB MERGE REQUEST FLOW                      │
+└──────────────────────────────────────────────────────────┘
+
+1. CREATE FEATURE BRANCH
+   main → feature/new-login
+
+2. MAKE CHANGES
+   Edit files, commit
+
+3. PUSH TO GITLAB
+   git push origin feature/new-login
+
+4. CREATE MERGE REQUEST
+   Via GitLab UI
+
+5. CODE REVIEW
+   Team reviews changes
+
+6. APPROVE
+   Reviewers approve
+
+7. MERGE
+   Changes merged to main
+
+8. DELETE BRANCH (optional)
+   Clean up
+</code></pre>
+<hr />
+<h3 id="method1mergeviagitlabwebui"><strong>Method 1: Merge via GitLab Web UI</strong></h3>
+<h4 id="stepbystepcreatingmergerequest"><strong>Step-by-Step: Creating Merge Request</strong></h4>
+<pre><code>STEP 1: Push Your Branch
+─────────────────────────
+
+# Local work
+$ git checkout -b feature/add-dashboard
+$ echo "dashboard code" &gt; dashboard.html
+$ git add dashboard.html
+$ git commit -m "Add dashboard page"
+$ git push origin feature/add-dashboard
+
+Enumerating objects: 4, done.
+To https://gitlab.com/username/project.git
+ * [new branch]      feature/add-dashboard -&gt; feature/add-dashboard
+
+
+STEP 2: GitLab Shows Banner
+────────────────────────────
+
+When you visit GitLab project page:
+
+┌────────────────────────────────────────────────────────┐
+│ You pushed to feature/add-dashboard                    │
+│                                                        │
+│ [Create merge request]                                │
+└────────────────────────────────────────────────────────┘
+
+Click [Create merge request]
+
+
+STEP 3: Fill MR Form
+────────────────────
+
+┌──────────────────────────────────────────────────────────┐
+│ New Merge Request                                        │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│ Title:                                                   │
+│ Add dashboard page                                       │
+│                                                          │
+│ Description:                                             │
+│ ┌──────────────────────────────────────────────────┐   │
+│ │ ## What does this MR do?                         │   │
+│ │ Adds a new dashboard page for user analytics     │   │
+│ │                                                   │   │
+│ │ ## Changes                                        │   │
+│ │ - Created dashboard.html                          │   │
+│ │ - Added charts library                            │   │
+│ │ - Implemented data fetching                       │   │
+│ │                                                   │   │
+│ │ ## Screenshots                                    │   │
+│ │ ![Dashboard preview](link-to-image)               │   │
+│ │                                                   │   │
+│ │ ## Testing                                        │   │
+│ │ - [x] Tested on Chrome                            │   │
+│ │ - [x] Tested on Firefox                           │   │
+│ │ - [ ] Tested on Safari                            │   │
+│ └──────────────────────────────────────────────────┘   │
+│                                                          │
+│ Source branch:    feature/add-dashboard                  │
+│ Target branch:    main                                   │
+│                                                          │
+│ Assignee:         [Select user ▼]                       │
+│ Reviewer:         [Select reviewers ▼]                  │
+│ Milestone:        [v2.0 ▼]                              │
+│ Labels:           [frontend] [enhancement]               │
+│                                                          │
+│ Merge options:                                           │
+│ ☑ Delete source branch when merge request is accepted   │
+│ ☐ Squash commits when merge request is accepted         │
+│ ☑ Allow collaboration on source branch                  │
+│                                                          │
+│ [Create merge request]  [Cancel]                        │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h4 id="step4mrcreated"><strong>STEP 4: MR Created</strong></h4>
+<pre><code>MR URL: gitlab.com/username/project/-/merge_requests/42
+
+┌──────────────────────────────────────────────────────────┐
+│ Add dashboard page  !42                                  │
+│ 🟢 Open  ·  yourname wants to merge 3 commits           │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│ Tabs: [Overview] [Commits] [Changes] [Pipelines]        │
+│                                                          │
+│ ┌──────────────────────────────────────────────────┐   │
+│ │ ## What does this MR do?                         │   │
+│ │ Adds a new dashboard page for user analytics     │   │
+│ └──────────────────────────────────────────────────┘   │
+│                                                          │
+│ Activity:                                                │
+│ ├─ yourname created merge request 5 minutes ago         │
+│ ├─ Pipeline #123 passed ✓                               │
+│ └─ 1 approval required from Code Owners                 │
+│                                                          │
+│ Changes: 📁 3 files                                      │
+│ ├─ dashboard.html     +45 -0                            │
+│ ├─ package.json       +1  -0                            │
+│ └─ README.md          +2  -0                            │
+│                                                          │
+│ Reviewers:                                               │
+│ ├─ @john-doe         [Approve]                          │
+│ └─ @jane-smith       Waiting for review                 │
+│                                                          │
+│ [Approve] [Merge] [Close merge request]                 │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h4 id="step5reviewprocess"><strong>STEP 5: Review Process</strong></h4>
+<pre><code>REVIEWER ACTIONS:
+─────────────────
+
+1. View Changes Tab
+   ┌────────────────────────────────────────┐
+   │ Changes (3)                            │
+   ├────────────────────────────────────────┤
+   │ dashboard.html                         │
+   │ +1  &lt;!DOCTYPE html&gt;                    │
+   │ +2  &lt;html&gt;                             │
+   │ +3  &lt;head&gt;                             │
+   │ +4    &lt;title&gt;Dashboard&lt;/title&gt;         │
+   │ +5  &lt;/head&gt;                            │
+   │     ...                                │
+   └────────────────────────────────────────┘
+
+2. Add Comments on Lines
+   Click on line number → Add comment
+
+   💬 Line 23:
+   "Consider using async/await instead of promises"
+
+   [Start review] [Add comment now]
+
+3. Submit Review
+   ┌────────────────────────────────────────┐
+   │ Submit review                          │
+   ├────────────────────────────────────────┤
+   │ Summary comment (optional):            │
+   │ ┌────────────────────────────────┐    │
+   │ │ Looks good overall! Just a few │    │
+   │ │ minor suggestions.             │    │
+   │ └────────────────────────────────┘    │
+   │                                        │
+   │ [Approve]  [Request changes]  [Comment]│
+   └────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h4 id="step6mergeoptions"><strong>STEP 6: Merge Options</strong></h4>
+<pre><code>When MR is approved and ready:
+
+┌──────────────────────────────────────────────────────────┐
+│ Merge                                                    │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│ Merge method:                                            │
+│                                                          │
+│ ⦿ Merge commit                                          │
+│   A merge commit will be created                         │
+│   feature/add-dashboard → main                           │
+│   All commits preserved                                  │
+│                                                          │
+│ ○ Merge when pipeline succeeds                          │
+│   Wait for CI/CD to finish                               │
+│                                                          │
+│ ○ Squash and merge                                      │
+│   Combine all commits into one                           │
+│   Cleaner history                                        │
+│                                                          │
+│ ○ Rebase and merge                                      │
+│   Reapply commits on top of target                       │
+│   Linear history                                         │
+│                                                          │
+│ Commit message:                                          │
+│ ┌──────────────────────────────────────────────────┐   │
+│ │ Merge branch 'feature/add-dashboard' into 'main' │   │
+│ │                                                   │   │
+│ │ Add dashboard page                                │   │
+│ └──────────────────────────────────────────────────┘   │
+│                                                          │
+│ Options:                                                 │
+│ ☑ Delete source branch                                  │
+│ ☐ Squash commits                                        │
+│                                                          │
+│ [Merge]  [Cancel]                                       │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h4 id="step7merged"><strong>STEP 7: Merged!</strong></h4>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│ Add dashboard page  !42                                  │
+│ 🔵 Merged  ·  yourname merged 3 commits                 │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│ The changes were merged into main                        │
+│ 2 minutes ago                                            │
+│                                                          │
+│ Source branch: feature/add-dashboard (deleted)           │
+│                                                          │
+│ [Revert]  [View in main]                                │
+└──────────────────────────────────────────────────────────┘
+
+# Local update
+$ git checkout main
+$ git pull origin main
+
+Updated main
+Fast-forward
+ dashboard.html | 45 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+</code></pre>
+<hr />
+<h3 id="method2mergeviacommandline"><strong>Method 2: Merge via Command Line</strong></h3>
+<pre><code class="bash language-bash"># ══════════════════════════════════════════════════════════
+# MERGING LOCALLY (Not Recommended for Teams)
+# ══════════════════════════════════════════════════════════
+
+# 1. Ensure main is up-to-date
+$ git checkout main
+$ git pull origin main
+
+# 2. Merge feature branch
+$ git merge feature/add-dashboard
+
+Merge made by the 'recursive' strategy.
+ dashboard.html | 45 ++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+
+# 3. Push merged result
+$ git push origin main
+
+# 4. Delete feature branch
+$ git branch -d feature/add-dashboard
+$ git push origin --delete feature/add-dashboard
+
+⚠️ Warning: This bypasses code review!
+          Use Merge Requests instead for team projects.
+</code></pre>
+<hr />
+<h3 id="gitlabmergerequestfeatures"><strong>GitLab Merge Request Features</strong></h3>
+<h4 id="mergerequesttemplates"><strong>Merge Request Templates</strong></h4>
+<pre><code class="markdown language-markdown">Create file: .gitlab/merge_request_templates/default.md
+
+## What does this MR do?
+
+(Describe the purpose of this MR)
+
+## Changes
+
+- [ ] Change 1
+- [ ] Change 2
+- [ ] Change 3
+
+## Related Issues
+
+Closes #issue-number
+
+## Screenshots
+
+(If applicable)
+
+## Testing
+
+- [ ] Unit tests added/updated
+- [ ] Manual testing completed
+- [ ] No breaking changes
+
+## Checklist
+
+- [ ] Code follows style guidelines
+- [ ] Self-review completed
+- [ ] Documentation updated
+- [ ] No console warnings/errors
+</code></pre>
+<p><strong>Usage</strong>: When creating MR, template auto-fills description</p>
+<hr />
+<h4 id="mergerequestapprovals"><strong>Merge Request Approvals</strong></h4>
+<pre><code>Settings → Merge Requests → Approval Rules
+
+┌────────────────────────────────────────────────────┐
+│ Approval Rules                                     │
+├────────────────────────────────────────────────────┤
+│                                                    │
+│ Rule: Require 2 approvals                          │
+│ Approvers: 2 required                              │
+│ Eligible approvers: All developers                 │
+│                                                    │
+│ Rule: Code Owner Approval                          │
+│ Approvers: 1 required from code owners             │
+│ Eligible approvers: Defined in CODEOWNERS file     │
+│                                                    │
+│ [Add approval rule]                                │
+└────────────────────────────────────────────────────┘
+
+
+CODEOWNERS file example:
+(.gitlab/CODEOWNERS)
+
+# Database changes require DBA approval
+/database/ @dba-team
+
+# Frontend changes require frontend lead approval
+/frontend/ @frontend-lead
+
+# Critical files require senior approval
+/config/ @senior-devs
+</code></pre>
+<hr />
+<h4 id="mergechecks"><strong>Merge Checks</strong></h4>
+<pre><code>Prevent merge until:
+
+☑ All threads resolved
+☑ Pipeline succeeds
+☑ Required approvals obtained
+☐ No open discussions
+☑ All merge request dependencies merged
+</code></pre>
+<hr />
+<h2 id="4howtoresolveconflicts">4️⃣ How to Resolve Conflicts</h2>
+<h3 id="whatisamergeconflict"><strong>What is a Merge Conflict?</strong></h3>
+<p><strong>Definition</strong>: 
+A <strong>merge conflict</strong> occurs when Git cannot automatically merge changes because the same part of a file was modified in both branches.</p>
+<h3 id="whenconflictsoccur"><strong>When Conflicts Occur</strong></h3>
+<pre><code>CONFLICT SCENARIO:
+──────────────────
+
+Day 1:
+main branch:      config.js → PORT = 3000
+
+Day 2:
+Developer A creates feature-A:
+├─ Changes: PORT = 5000
+└─ Merges to main ✓
+
+Day 3:
+Developer B creates feature-B (from old main):
+├─ Changes: PORT = 8080
+└─ Tries to merge → CONFLICT! ⚠️
+
+Why? Same line changed in both branches!
+Git doesn't know which to keep.
+</code></pre>
+<hr />
+<h3 id="visualrepresentation"><strong>Visual Representation</strong></h3>
+<pre><code>BEFORE CONFLICT:
+────────────────
+
+        A ← B ← C (main)
+               ↗
+              PORT = 3000
+
+        MERGE feature-A:
+        │
+        ▼
+        A ← B ← C ← D (main)
+                    ↑
+                  PORT = 5000
+
+
+CONFLICT OCCURS:
+────────────────
+
+        A ← B ← C ← D (main, PORT = 5000)
+               ↘
+                E (feature-B, PORT = 8080)
+
+        Try to merge feature-B:
+                ↓
+        ⚠️  CONFLICT! Same line different values
+</code></pre>
+<hr />
+<h3 id="method1resolveingitlabwebui"><strong>Method 1: Resolve in GitLab Web UI</strong></h3>
+<h4 id="stepbystep"><strong>Step-by-Step</strong></h4>
+<pre><code>STEP 1: Conflict Detected
+─────────────────────────
+
+When creating or viewing MR:
+
+┌────────────────────────────────────────────────────┐
+│ Merge request !42                                  │
+├────────────────────────────────────────────────────┤
+│                                                    │
+│ ⚠️  This merge request has conflicts that must    │
+│     be resolved                                    │
+│                                                    │
+│ Conflicting files:                                 │
+│ ├─ config.js                                       │
+│ └─ server.js                                       │
+│                                                    │
+│ [Resolve conflicts] [Resolve locally]              │
+└────────────────────────────────────────────────────┘
+
+Click [Resolve conflicts]
+
+
+STEP 2: GitLab Conflict Editor
+───────────────────────────────
+
+┌────────────────────────────────────────────────────────┐
+│ Resolve conflicts in config.js                        │
+├────────────────────────────────────────────────────────┤
+│                                                        │
+│ &lt;&lt;&lt;&lt;&lt;&lt;&lt; feature-B (Your changes)                      │
+│ const PORT = 8080;                                     │
+│ =======                                                │
+│ const PORT = 5000;                                     │
+│ &gt;&gt;&gt;&gt;&gt;&gt;&gt; main (Their changes)                          │
+│                                                        │
+│ [Use ours] [Use theirs] [Edit inline]                 │
+└────────────────────────────────────────────────────────┘
+
+
+STEP 3: Choose Resolution
+──────────────────────────
+
+Option 1: Use ours (feature-B version)
+├─ Keeps: const PORT = 8080;
+
+Option 2: Use theirs (main version)
+├─ Keeps: const PORT = 5000;
+
+Option 3: Edit inline (custom)
+├─ Edit to: const PORT = process.env.PORT || 5000;
+
+
+STEP 4: Commit Resolution
+──────────────────────────
+
+┌────────────────────────────────────────────────────────┐
+│ All conflicts resolved                                 │
+│                                                        │
+│ Commit message:                                        │
+│ ┌────────────────────────────────────────────────┐   │
+│ │ Resolve conflicts in config.js                 │   │
+│ │                                                 │   │
+│ │ - Used environment variable for PORT           │   │
+│ └────────────────────────────────────────────────┘   │
+│                                                        │
+│ [Commit to source branch]                              │
+└────────────────────────────────────────────────────────┘
+
+
+STEP 5: Merge Request Updated
+──────────────────────────────
+
+┌────────────────────────────────────────────────────────┐
+│ Merge request !42                                      │
+│                                                        │
+│ ✅ All conflicts resolved                              │
+│ ✅ Pipeline passed                                     │
+│ ✅ Ready to merge                                      │
+│                                                        │
+│ [Merge]                                                │
+└────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h3 id="method2resolvelocally"><strong>Method 2: Resolve Locally</strong></h3>
+<pre><code class="bash language-bash"># ══════════════════════════════════════════════════════════
+# RESOLVING CONFLICTS LOCALLY
+# ══════════════════════════════════════════════════════════
+
+# STEP 1: Update your feature branch with latest main
+$ git checkout feature-B
+$ git fetch origin
+$ git merge origin/main
+
+Auto-merging config.js
+CONFLICT (content): Merge conflict in config.js
+Auto-merging server.js
+CONFLICT (content): Merge conflict in server.js
+Automatic merge failed; fix conflicts and then commit the result.
+
+
+# STEP 2: Check status
+$ git status
+
+On branch feature-B
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+
+Unmerged paths:
+  (use "git add &lt;file&gt;..." to mark resolution)
+        both modified:   config.js
+        both modified:   server.js
+
+
+# STEP 3: View conflicts in file
+$ cat config.js
+
+const express = require('express');
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+const PORT = 8080;  // Your changes (feature-B)
+=======
+const PORT = 5000;  // Their changes (main)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main
+const app = express();
+
+
+# STEP 4: Edit file to resolve
+$ vim config.js
+
+# Manually edit to:
+const express = require('express');
+const PORT = process.env.PORT || 5000;  // Resolved
+const app = express();
+
+# Remove conflict markers (&lt;&lt;&lt;, ===, &gt;&gt;&gt;)
+
+
+# STEP 5: Mark as resolved
+$ git add config.js
+$ git add server.js
+
+$ git status
+On branch feature-B
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+
+# STEP 6: Commit the resolution
+$ git commit -m "Resolve merge conflicts
+
+- Use environment variable for PORT
+- Fallback to 5000 if not set
+- Resolved conflicts in config.js and server.js"
+
+[feature-B a1b2c3d] Resolve merge conflicts
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+
+# STEP 7: Push to GitLab
+$ git push origin feature-B
+
+# MR automatically updates and shows conflicts resolved!
+</code></pre>
+<hr />
+<h3 id="understandingconflictmarkers"><strong>Understanding Conflict Markers</strong></h3>
+<pre><code>CONFLICT MARKERS EXPLAINED:
+───────────────────────────
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (or branch name)
+YOUR CHANGES
+These are your local changes
+=======
+THEIR CHANGES  
+These are the incoming changes
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-name (or commit hash)
+
+
+REAL EXAMPLE:
+─────────────
+
+Original file (both branches started from here):
+function greet() {
+  console.log("Hello");
+}
+
+Branch A changed to:
+function greet() {
+  console.log("Hello World");
+}
+
+Branch B changed to:
+function greet() {
+  console.log("Hi there");
+}
+
+Conflict looks like:
+function greet() {
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; feature-A
+  console.log("Hello World");
+=======
+  console.log("Hi there");
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-B
+}
+
+
+RESOLUTION OPTIONS:
+───────────────────
+
+Option 1: Keep feature-A version
+function greet() {
+  console.log("Hello World");
+}
+
+Option 2: Keep feature-B version
+function greet() {
+  console.log("Hi there");
+}
+
+Option 3: Combine both (if makes sense)
+function greet(formal = false) {
+  console.log(formal ? "Hello World" : "Hi there");
+}
+
+Option 4: Completely new solution
+function greet() {
+  console.log("Greetings!");
+}
+</code></pre>
+<hr />
+<h3 id="toolsforresolvingconflicts"><strong>Tools for Resolving Conflicts</strong></h3>
+<h4 id="1gitlabwebeditorsimpleconflictsonly"><strong>1. GitLab Web Editor</strong> (Simple conflicts only)</h4>
+<pre><code>Pros:
+✅ No local setup needed
+✅ Quick for simple conflicts
+✅ Visual interface
+
+Cons:
+❌ Limited to simple conflicts
+❌ Can't run tests
+❌ No IDE features
+</code></pre>
+<hr />
+<h4 id="2commandlinetexteditor"><strong>2. Command Line + Text Editor</strong></h4>
+<pre><code class="bash language-bash"># Basic resolution
+vim config.js
+# Manually edit
+git add config.js
+git commit
+</code></pre>
+<hr />
+<h4 id="3vscodebestformostcases"><strong>3. VS Code (Best for most cases)</strong></h4>
+<pre><code>VS Code shows conflicts with actions:
+
+┌────────────────────────────────────────────────┐
+│ config.js                                      │
+├────────────────────────────────────────────────┤
+│                                                │
+│ &lt;&lt;&lt;&lt;&lt;&lt;&lt; Current Change (feature-B)            │
+│ const PORT = 8080;                             │
+│ [Accept Current Change]                        │
+│ =======                                        │
+│ const PORT = 5000;                             │
+│ [Accept Incoming Change]                       │
+│ &gt;&gt;&gt;&gt;&gt;&gt;&gt; Incoming Change (main)                │
+│ [Accept Both Changes] [Compare Changes]        │
+│                                                │
+└────────────────────────────────────────────────┘
+
+Click buttons or edit manually!
+</code></pre>
+<hr />
+<h4 id="4gitkrakensourcetreeguitools"><strong>4. GitKraken / SourceTree (GUI Tools)</strong></h4>
+<pre><code>Visual merge tool shows:
+
+┌────────────────────────────────────────────────────────┐
+│          MERGE CONFLICT RESOLUTION                     │
+├───────────────┬─────────────────┬──────────────────────┤
+│   OURS        │    RESULT       │     THEIRS           │
+│  (feature-B)  │   (Choose)      │    (main)            │
+├───────────────┼─────────────────┼──────────────────────┤
+│ PORT = 8080   │ PORT = 5000     │ PORT = 5000          │
+│               │      ▲          │                      │
+│               │   [Choose]      │                      │
+│               │      │          │                      │
+│ [Use this]    │   [Edit]        │ [Use this]           │
+└───────────────┴─────────────────┴──────────────────────┘
+</code></pre>
+<hr />
+<h3 id="bestpracticesforconflictresolution"><strong>Best Practices for Conflict Resolution</strong></h3>
+<pre><code class="bash language-bash">✅ DO:
+──────
+1. Communicate with team
+   "I'm resolving conflicts in config.js"
+
+2. Understand both changes
+   Read the diff, understand intent
+
+3. Test after resolving
+   Run tests before pushing
+
+4. Keep commits atomic
+   One logical change per commit
+
+5. Pull frequently
+   git pull origin main (daily)
+
+6. Use descriptive commit messages
+   "Resolve conflict: merge payment methods"
+
+7. Ask for help
+   If unsure, ask the other developer
+
+
+❌ DON'T:
+──────────
+1. Blindly accept one side
+   Understand what you're keeping/discarding
+
+2. Resolve without testing
+   Broken code might pass merge
+
+3. Leave conflict markers
+   Always remove &lt;&lt;&lt;, ===, &gt;&gt;&gt;
+
+4. Mix resolution with new changes
+   Conflict resolution commit should only resolve
+
+5. Force push
+   Never: git push --force (loses others' work)
+
+6. Panic
+   Conflicts are normal, take your time
+</code></pre>
+<hr />
+<h3 id="complexconflictexample"><strong>Complex Conflict Example</strong></h3>
+<pre><code class="javascript language-javascript">// ══════════════════════════════════════════════════════════
+// SCENARIO: Both developers modified authentication
+// ══════════════════════════════════════════════════════════
+
+// Original code (main):
+function authenticate(username, password) {
+  return users.find(u =&gt; u.name === username &amp;&amp; u.pass === password);
+}
+
+// Developer A (feature-A): Add email support
+function authenticate(email, password) {
+  return users.find(u =&gt; u.email === email &amp;&amp; u.pass === password);
+}
+
+// Developer B (feature-B): Add hashing
+function authenticate(username, password) {
+  const hashedPassword = hash(password);
+  return users.find(u =&gt; u.name === username &amp;&amp; u.pass === hashedPassword);
+}
+
+// CONFLICT when merging:
+function authenticate(
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; feature-A
+email, password) {
+  return users.find(u =&gt; u.email === email &amp;&amp; u.pass === password);
+=======
+username, password) {
+  const hashedPassword = hash(password);
+  return users.find(u =&gt; u.name === username &amp;&amp; u.pass === hashedPassword);
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-B
+}
+
+// BEST RESOLUTION: Combine both features
+function authenticate(identifier, password) {
+  const hashedPassword = hash(password);
+  return users.find(u =&gt; 
+    (u.email === identifier || u.name === identifier) &amp;&amp; 
+    u.pass === hashedPassword
+  );
+}
+
+// Document in commit:
+// "Resolve conflict: Support both email and username login with hashing"
+</code></pre>
+<hr />
+<h2 id="5introductiontoide">5️⃣ Introduction to IDE</h2>
+<h3 id="whatisanide"><strong>What is an IDE?</strong></h3>
+<p><strong>Definition</strong>: 
+An <strong>IDE (Integrated Development Environment)</strong> is a software application that provides comprehensive facilities to programmers for software development. It typically includes a code editor, debugger, build automation tools, and more.</p>
+<h3 id="simpleanalogy-2"><strong>Simple Analogy</strong> 🛠️</h3>
+<pre><code>Text Editor vs IDE:
+
+Text Editor (Notepad, Vim):
+├─ Like a basic toolbox
+├─ Hammer, screwdriver
+├─ Can build things but manually
+└─ Simple, lightweight
+
+IDE (VS Code, IntelliJ):
+├─ Like a fully equipped workshop
+├─ Power tools, workbench, organized storage
+├─ Everything in one place
+├─ Automation, suggestions, debugging
+└─ Comprehensive, feature-rich
+</code></pre>
+<hr />
+<h3 id="idevstexteditorvscodeeditor"><strong>IDE vs Text Editor vs Code Editor</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│         IDE vs CODE EDITOR vs TEXT EDITOR                │
+└──────────────────────────────────────────────────────────┘
+
+TEXT EDITOR              CODE EDITOR           IDE
+───────────              ───────────           ───
+Notepad                  VS Code               Visual Studio
+Nano                     Sublime Text          IntelliJ IDEA
+Vim                      Atom                  Eclipse
+                         Notepad++             PyCharm
+                                              WebStorm
+
+Features:
+├─ Basic editing        ├─ Syntax highlight   ├─ All code editor features
+├─ Save files           ├─ Extensions         ├─ Built-in compiler
+├─ Find/replace         ├─ Git integration    ├─ Debugger
+└─ Minimal              ├─ Linting            ├─ Project management
+                        ├─ Autocomplete       ├─ Database tools
+                        └─ Terminal           ├─ Visual designer
+                                              └─ Refactoring tools
+
+Size:                   Size:                 Size:
+&lt; 5 MB                  50-200 MB             500 MB - 2 GB
+
+Speed:                  Speed:                Speed:
+⚡ Very fast           ⚡ Fast               🐌 Can be slow
+
+Use For:                Use For:              Use For:
+Quick edits             General development   Large projects
+Config files            Web development       Enterprise apps
+Servers                 Multi-language        Complex debugging
+</code></pre>
+<hr />
+<h3 id="keyidefeatures"><strong>Key IDE Features</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│              ESSENTIAL IDE FEATURES                      │
+└──────────────────────────────────────────────────────────┘
+
+1. CODE EDITOR
+   ├─ Syntax highlighting (colors for code)
+   ├─ Line numbers
+   ├─ Code folding (collapse functions)
+   ├─ Multiple cursors
+   └─ Search &amp; replace
+
+2. INTELLISENSE / AUTOCOMPLETE
+   ├─ Suggests code as you type
+   ├─ Parameter hints
+   ├─ Auto-import
+   └─ Documentation popup
+
+3. DEBUGGING
+   ├─ Breakpoints (pause execution)
+   ├─ Step through code
+   ├─ Watch variables
+   ├─ Call stack
+   └─ Console
+
+4. VERSION CONTROL (Git)
+   ├─ Visual diff
+   ├─ Commit &amp; push from IDE
+   ├─ Branch management
+   ├─ Merge conflict resolution
+   └─ Blame annotations
+
+5. TERMINAL
+   ├─ Built-in command line
+   ├─ Multiple terminals
+   ├─ Split view
+   └─ Run commands without leaving IDE
+
+6. EXTENSIONS/PLUGINS
+   ├─ Add functionality
+   ├─ Language support
+   ├─ Themes
+   └─ Productivity tools
+
+7. PROJECT MANAGEMENT
+   ├─ File explorer
+   ├─ Search across files
+   ├─ Refactoring tools
+   └─ TODO tracking
+
+8. LIVE PREVIEW
+   ├─ See changes immediately
+   ├─ Browser sync
+   └─ Hot reload
+</code></pre>
+<hr />
+<h3 id="popularidescodeeditors"><strong>Popular IDEs/Code Editors</strong></h3>
+<pre><code>FOR WEB DEVELOPMENT:
+────────────────────
+1. Visual Studio Code (VS Code) ⭐ Most Popular
+   ├─ Free, open source
+   ├─ Lightweight
+   ├─ Huge extension marketplace
+   └─ Works on Windows, Mac, Linux
+
+2. WebStorm
+   ├─ Paid (JetBrains)
+   ├─ Feature-rich
+   └─ Best for JavaScript/TypeScript
+
+3. Sublime Text
+   ├─ Fast, lightweight
+   └─ Paid (free trial)
+
+
+FOR JAVA:
+─────────
+1. IntelliJ IDEA
+   ├─ Industry standard
+   └─ Community (free) &amp; Ultimate (paid)
+
+2. Eclipse
+   ├─ Free, open source
+   └─ Older but stable
+
+
+FOR PYTHON:
+───────────
+1. PyCharm
+   ├─ Best for Python
+   └─ Community (free) &amp; Professional (paid)
+
+2. VS Code
+   └─ With Python extension
+
+
+FOR C/C++:
+──────────
+1. Visual Studio (Windows)
+2. CLion (JetBrains)
+3. VS Code with C++ extensions
+
+
+FOR MOBILE:
+───────────
+1. Android Studio (Android)
+2. Xcode (iOS/Mac)
+3. VS Code (React Native, Flutter)
+</code></pre>
+<hr />
+<h2 id="6visualstudiocodeinstallation">6️⃣ Visual Studio Code Installation</h2>
+<h3 id="whatisvscode"><strong>What is VS Code?</strong></h3>
+<p><strong>Definition</strong>: 
+<strong>Visual Studio Code (VS Code)</strong> is a free, open-source code editor developed by Microsoft. It's lightweight yet powerful, with extensive extension support.</p>
+<h3 id="whyvscode"><strong>Why VS Code?</strong></h3>
+<pre><code>✅ Free &amp; open source
+✅ Lightweight (fast startup)
+✅ Cross-platform (Windows, Mac, Linux)
+✅ Huge extension marketplace
+✅ Built-in Git support
+✅ Integrated terminal
+✅ IntelliSense (autocomplete)
+✅ Debugging support
+✅ Active development
+✅ Large community
+</code></pre>
+<hr />
+<h3 id="installationsteps"><strong>Installation Steps</strong></h3>
+<h4 id="windows"><strong>🪟 Windows</strong></h4>
+<pre><code>METHOD 1: Download from Website
+────────────────────────────────
+
+1. Visit: https://code.visualstudio.com/
+
+2. Click [Download for Windows]
+   (Downloads: VSCodeUserSetup-x64-1.85.0.exe)
+
+3. Run installer
+
+   ┌────────────────────────────────────────┐
+   │ Visual Studio Code Setup               │
+   ├────────────────────────────────────────┤
+   │                                        │
+   │ Select Additional Tasks:               │
+   │                                        │
+   │ ☑ Add "Open with Code" to context    │
+   │   menu (right-click option)            │
+   │ ☑ Add to PATH                         │
+   │ ☑ Register Code as editor for         │
+   │   supported file types                 │
+   │ ☑ Create desktop icon                 │
+   │                                        │
+   │ [Install]                              │
+   └────────────────────────────────────────┘
+
+4. Click Install
+
+5. Launch VS Code ✓
+
+
+METHOD 2: Using Winget
+──────────────────────
+
+# Open PowerShell/Command Prompt
+winget install Microsoft.VisualStudioCode
+
+
+METHOD 3: Using Chocolatey
+───────────────────────────
+
+# Open PowerShell as Administrator
+choco install vscode -y
+</code></pre>
+<hr />
+<h4 id="macos"><strong>🍎 macOS</strong></h4>
+<pre><code>METHOD 1: Download from Website
+────────────────────────────────
+
+1. Visit: https://code.visualstudio.com/
+
+2. Click [Download for Mac]
+   (Downloads: VSCode-darwin-universal.zip)
+
+3. Open downloaded .zip file
+
+4. Drag "Visual Studio Code.app" to Applications folder
+
+5. Open from Applications or Spotlight (⌘ + Space, type "code")
+
+
+METHOD 2: Using Homebrew
+─────────────────────────
+
+# Install Homebrew first (if not installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install VS Code
+brew install --cask visual-studio-code
+
+
+COMMAND LINE INTEGRATION:
+─────────────────────────
+
+1. Open VS Code
+2. ⌘ + Shift + P (Command Palette)
+3. Type: "shell command"
+4. Click "Shell Command: Install 'code' command in PATH"
+
+Now you can open files/folders from terminal:
+$ code myfile.js
+$ code .  (open current directory)
+</code></pre>
+<hr />
+<h4 id="linuxubuntudebian"><strong>🐧 Linux (Ubuntu/Debian)</strong></h4>
+<pre><code>METHOD 1: Via Snap (Easiest)
+─────────────────────────────
+
+sudo snap install --classic code
+
+
+METHOD 2: Via APT Repository
+─────────────────────────────
+
+# Update package index and install dependencies
+sudo apt update
+sudo apt install software-properties-common apt-transport-https wget -y
+
+# Import Microsoft GPG key
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor &gt; packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+
+# Add VS Code repository
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" &gt; /etc/apt/sources.list.d/vscode.list'
+
+# Install VS Code
+sudo apt update
+sudo apt install code -y
+
+
+METHOD 3: Download .deb Package
+────────────────────────────────
+
+1. Visit: https://code.visualstudio.com/
+
+2. Click [.deb] download
+
+3. Install:
+sudo dpkg -i code_*.deb
+sudo apt-get install -f  # Fix dependencies
+
+
+LAUNCH:
+───────
+code
+# or from applications menu
+</code></pre>
+<hr />
+<h3 id="firstlaunchsetup"><strong>First Launch Setup</strong></h3>
+<pre><code>WHEN YOU FIRST OPEN VS CODE:
+─────────────────────────────
+
+1. Welcome Screen
+   ┌────────────────────────────────────────┐
+   │ Welcome to Visual Studio Code          │
+   ├────────────────────────────────────────┤
+   │                                        │
+   │ [Start]                                │
+   │ ├─ New File                            │
+   │ ├─ Open Folder                         │
+   │ └─ Clone Git Repository                │
+   │                                        │
+   │ [Learn]                                │
+   │ ├─ Interface Overview                  │
+   │ ├─ Tips and Tricks                     │
+   │ └─ Settings Sync                       │
+   │                                        │
+   │ [Customize]                            │
+   │ ├─ Color Theme                         │
+   │ ├─ File Icon Theme                     │
+   │ └─ Settings                            │
+   └────────────────────────────────────────┘
+
+
+2. Choose Color Theme
+   ├─ Dark+ (default dark)
+   ├─ Light+ (default light)
+   ├─ Monokai
+   └─ Solarized Dark
+
+   Access later: Ctrl/⌘ + K, Ctrl/⌘ + T
+
+
+3. Install Recommended Extensions
+   VS Code suggests extensions based on files you open
+</code></pre>
+<hr />
+<h3 id="vscodeinterfacetour"><strong>VS Code Interface Tour</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│ VS CODE INTERFACE                                        │
+└──────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ File  Edit  View  Go  Run  Terminal  Help        [- □ ×]│ Title Bar
+├─┬───────────────────────────────────────────────────────┤
+│A│ 📁 index.html    ✕  📄 style.css  ✕                  │ Tab Bar
+│C├───────────────────────────────────────────────────────┤
+│T│  1  &lt;!DOCTYPE html&gt;                                   │
+│I│  2  &lt;html&gt;                                            │
+│V│  3    &lt;head&gt;                                          │ Editor
+│I│  4      &lt;title&gt;My Page&lt;/title&gt;                        │ Area
+│T│  5    &lt;/head&gt;                                         │
+│Y│  6    &lt;body&gt;                                          │
+││ │  7      &lt;h1&gt;Hello World&lt;/h1&gt;                         │
+│B│  8    &lt;/body&gt;                                         │
+│A│  9  &lt;/html&gt;                                           │
+│R│ 10                                                    │
+├─┼───────────────────────────────────────────────────────┤
+│ │ &gt;_ TERMINAL                                   [+ ▼ ×]│
+│ │ $ npm start                                           │ Terminal
+│ │ Server running on http://localhost:3000               │
+│ │ _                                                     │
+├─┴───────────────────────────────────────────────────────┤
+│ main ⚡ Ln 7, Col 15  Spaces: 2  UTF-8  HTML   🔔      │ Status Bar
+└─────────────────────────────────────────────────────────┘
+
+Activity Bar (Left):
+─────────────────────
+📁 Explorer (Ctrl+Shift+E)
+🔍 Search (Ctrl+Shift+F)
+🔀 Source Control / Git (Ctrl+Shift+G)
+🐛 Run and Debug (Ctrl+Shift+D)
+🧩 Extensions (Ctrl+Shift+X)
+</code></pre>
+<hr />
+<h3 id="essentialkeyboardshortcuts"><strong>Essential Keyboard Shortcuts</strong></h3>
+<pre><code>GENERAL:
+────────
+Ctrl/⌘ + P          Quick Open file
+Ctrl/⌘ + Shift + P  Command Palette
+Ctrl/⌘ + B          Toggle Sidebar
+Ctrl/⌘ + `          Toggle Terminal
+Ctrl/⌘ + W          Close Editor
+Ctrl/⌘ + K, Z       Zen Mode (distraction-free)
+
+EDITING:
+────────
+Ctrl/⌘ + /          Toggle Comment
+Alt + ↑/↓           Move Line Up/Down
+Shift + Alt + ↑/↓   Copy Line Up/Down
+Ctrl/⌘ + D          Select Next Occurrence
+Ctrl/⌘ + Shift + L  Select All Occurrences
+Ctrl/⌘ + F          Find
+Ctrl/⌘ + H          Replace
+
+NAVIGATION:
+───────────
+Ctrl/⌘ + G          Go to Line
+Ctrl/⌘ + Tab        Switch Between Files
+Ctrl + -            Go Back
+Ctrl + Shift + -    Go Forward
+F12                 Go to Definition
+Alt + F12           Peek Definition
+
+MULTI-CURSOR:
+─────────────
+Alt + Click         Add Cursor
+Ctrl/⌘ + Alt + ↑/↓  Add Cursor Above/Below
+</code></pre>
+<hr />
+<h2 id="7autogitinvscode">7️⃣ Auto Git in VS Code</h2>
+<h3 id="whatisautogit"><strong>What is Auto Git?</strong></h3>
+<p><strong>Definition</strong>: 
+<strong>Auto Git</strong> refers to VS Code's built-in Git integration and extensions that automate Git operations, providing visual Git management without using command line.</p>
+<hr />
+<h3 id="vscodebuiltingitfeatures"><strong>VS Code Built-in Git Features</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│          VS CODE GIT FEATURES                            │
+└──────────────────────────────────────────────────────────┘
+
+INCLUDED BY DEFAULT:
+────────────────────
+✅ Visual diff viewer
+✅ Stage/unstage files
+✅ Commit with GUI
+✅ Branch management
+✅ Push/pull
+✅ Conflict resolution
+✅ Git blame
+✅ Timeline view
+✅ Merge conflict helper
+</code></pre>
+<hr />
+<h3 id="sourcecontrolpanel"><strong>Source Control Panel</strong></h3>
+<pre><code>Click Source Control icon (Ctrl/⌘ + Shift + G)
+
+┌────────────────────────────────────────────────┐
+│ SOURCE CONTROL                           ⚙️     │
+├────────────────────────────────────────────────┤
+│                                                │
+│ Message                                        │
+│ ┌────────────────────────────────────────┐   │
+│ │ Add login feature                       │   │
+│ └────────────────────────────────────────┘   │
+│ [✓ Commit] [∼ Sync Changes ▼]                │
+│                                                │
+│ CHANGES (3)                                    │
+│ ├─ M src/login.js                     [+][-]  │
+│ ├─ A src/auth.js                      [+]     │
+│ └─ D old-code.js                      [-]     │
+│                                                │
+│ STAGED CHANGES (1)                             │
+│ └─ M README.md                        [-]     │
+│                                                │
+└────────────────────────────────────────────────┘
+
+Symbols:
+M = Modified
+A = Added (new file)
+D = Deleted
+U = Untracked
+C = Conflict
+
+Actions:
+[+] = Stage
+[-] = Unstage
+[↻] = Discard changes
+</code></pre>
+<hr />
+<h3 id="gitworkflowinvscode"><strong>Git Workflow in VS Code</strong></h3>
+<h4 id="step1initializerepository"><strong>Step 1: Initialize Repository</strong></h4>
+<pre><code>METHOD 1: From Source Control Panel
+────────────────────────────────────
+1. Open folder: File → Open Folder
+2. Click Source Control icon
+3. Click [Initialize Repository]
+4. Git initialized! ✓
+
+
+METHOD 2: From Command Palette
+───────────────────────────────
+1. Ctrl/⌘ + Shift + P
+2. Type: "Git: Initialize Repository"
+3. Select folder
+4. Done! ✓
+</code></pre>
+<hr />
+<h4 id="step2stagefiles"><strong>Step 2: Stage Files</strong></h4>
+<pre><code>STAGE INDIVIDUAL FILES:
+───────────────────────
+├─ Hover over file in CHANGES
+└─ Click [+] to stage
+
+STAGE ALL FILES:
+────────────────
+Click [+] next to "CHANGES"
+
+STAGE SELECTED LINES:
+─────────────────────
+1. Open file
+2. Select lines
+3. Right-click
+4. "Stage Selected Ranges"
+</code></pre>
+<hr />
+<h4 id="step3commit"><strong>Step 3: Commit</strong></h4>
+<pre><code>1. Type commit message in text box
+
+   ┌────────────────────────────────────────┐
+   │ Add user authentication                │
+   │                                        │
+   │ - Implement login form                 │
+   │ - Add JWT token handling               │
+   │ - Create auth middleware               │
+   └────────────────────────────────────────┘
+
+2. Click [✓ Commit]
+
+OR
+
+Ctrl/⌘ + Enter (commit)
+
+AMEND LAST COMMIT:
+──────────────────
+Click [...] → Commit → Commit (Amend)
+</code></pre>
+<hr />
+<h4 id="step4viewhistory"><strong>Step 4: View History</strong></h4>
+<pre><code>TIMELINE VIEW:
+──────────────
+1. Select file in Explorer
+2. View Timeline panel (bottom of Explorer)
+3. See all commits affecting this file
+
+GIT GRAPH EXTENSION:
+────────────────────
+Install "Git Graph" extension
+Click "Git Graph" in status bar
+Visual commit history!
+
+┌────────────────────────────────────────┐
+│  * a1b2c3d  Add login     (main)       │
+│  │                                     │
+│  * b2c3d4e  Fix header                 │
+│  │                                     │
+│  *───┐                                 │
+│  │   * c3d4e5f  Add footer (feature)  │
+│  │   │                                 │
+│  │   * d4e5f6g  Style changes          │
+│  │   │                                 │
+│  * ──┘ e5f6g7h  Merge feature          │
+│  │                                     │
+│  * f6g7h8i  Initial commit             │
+└────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h4 id="step5branching"><strong>Step 5: Branching</strong></h4>
+<pre><code>CREATE BRANCH:
+──────────────
+1. Click branch name in status bar (bottom-left)
+2. "Create new branch from..."
+3. Enter name: "feature/dark-mode"
+4. Branch created and switched! ✓
+
+OR
+
+Command Palette → "Git: Create Branch"
+
+
+SWITCH BRANCHES:
+────────────────
+1. Click branch name in status bar
+2. Select branch from list
+
+OR
+
+Ctrl/⌘ + Shift + P → "Git: Checkout to..."
+
+
+DELETE BRANCH:
+──────────────
+Command Palette → "Git: Delete Branch"
+</code></pre>
+<hr />
+<h4 id="step6pushpull"><strong>Step 6: Push/Pull</strong></h4>
+<pre><code>PUSH:
+─────
+Method 1: Click [↑] in Source Control
+Method 2: Status bar cloud icon
+Method 3: [...] → Push
+
+PULL:
+─────
+Method 1: Click [↓] in Source Control
+Method 2: [...] → Pull
+
+SYNC (Pull + Push):
+───────────────────
+Click [∼ Sync Changes] button
+</code></pre>
+<hr />
+<h3 id="gitlensextensionsuperchargedgit"><strong>GitLens Extension</strong> (Supercharged Git)</h3>
+<pre><code>INSTALL GITLENS:
+────────────────
+1. Extensions (Ctrl/⌘ + Shift + X)
+2. Search "GitLens"
+3. Install by GitKraken
+
+FEATURES:
+─────────
+
+1. INLINE BLAME
+   Shows author &amp; date at end of each line
+
+   function login() {  // John Doe, 2 days ago
+     ...
+   }
+
+2. FILE HISTORY
+   Complete file commit history
+
+3. LINE HISTORY
+   See who changed specific line
+
+4. CURRENT LINE BLAME
+   Hover over line → see full commit details
+
+5. CODELENS
+   Shows "Recent change" above functions
+
+   // Recent change: John Doe, 2 days ago | 5 authors
+   function authenticate() {
+     ...
+   }
+
+6. SIDE-BY-SIDE COMPARISON
+   Compare current vs previous versions
+
+7. REPOSITORY VIEW
+   Visual repository structure with commits
+</code></pre>
+<hr />
+<h3 id="autogitextension"><strong>Auto Git Extension</strong></h3>
+<pre><code>INSTALL AUTO GIT:
+─────────────────
+Extensions → Search "Auto Git" → Install
+
+FEATURES:
+─────────
+├─ Auto-fetch (pulls changes periodically)
+├─ Auto-commit (commits on file save)
+├─ Auto-push (pushes after commit)
+└─ Configurable intervals
+
+SETTINGS:
+─────────
+File → Preferences → Settings
+Search "Auto Git"
+
+┌────────────────────────────────────────┐
+│ Auto Git Configuration                 │
+├────────────────────────────────────────┤
+│ ☑ Auto Fetch                          │
+│   Interval: [60] seconds              │
+│                                        │
+│ ☐ Auto Commit                         │
+│   Message: "Auto commit"              │
+│                                        │
+│ ☐ Auto Push                           │
+│   After each commit                   │
+└────────────────────────────────────────┘
+
+⚠️ USE WITH CAUTION:
+Auto-commit can create messy history
+Better for personal projects only
+</code></pre>
+<hr />
+<h3 id="conflictresolutioninvscode"><strong>Conflict Resolution in VS Code</strong></h3>
+<pre><code>WHEN CONFLICT OCCURS:
+─────────────────────
+
+1. VS Code highlights conflicts
+
+   ┌────────────────────────────────────────┐
+   │ config.js                        [×]   │
+   ├────────────────────────────────────────┤
+   │                                        │
+   │ const express = require('express');    │
+   │ &lt;&lt;&lt;&lt;&lt;&lt;&lt; Current Change                 │
+   │ const PORT = 8080;                     │
+   │ [Accept Current Change]                │
+   │ [Accept Both Changes]                  │
+   │ [Compare Changes]                      │
+   │ =======                                │
+   │ const PORT = 5000;                     │
+   │ [Accept Incoming Change]               │
+   │ &gt;&gt;&gt;&gt;&gt;&gt;&gt; Incoming Change                │
+   │                                        │
+   └────────────────────────────────────────┘
+
+
+2. CLICK BUTTONS:
+   ├─ Accept Current Change (keep your version)
+   ├─ Accept Incoming Change (keep their version)
+   ├─ Accept Both Changes (keep both)
+   └─ Compare Changes (side-by-side view)
+
+
+3. OR EDIT MANUALLY:
+   Delete conflict markers
+   Keep desired code
+
+
+4. MARK AS RESOLVED:
+   Source Control → Stage file (+)
+
+
+5. COMMIT:
+   Message: "Resolve merge conflict in config.js"
+   Click Commit
+</code></pre>
+<hr />
+<h3 id="essentialgitextensionsforvscode"><strong>Essential Git Extensions for VS Code</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│         RECOMMENDED GIT EXTENSIONS                       │
+└──────────────────────────────────────────────────────────┘
+
+1. GITLENS ⭐ (Must-have)
+   ├─ Supercharged Git capabilities
+   ├─ Blame annotations
+   ├─ File history
+   └─ Author: GitKraken
+
+2. GIT GRAPH
+   ├─ Visual commit graph
+   ├─ Branch visualization
+   └─ Author: mhutchie
+
+3. GIT HISTORY
+   ├─ View git log
+   ├─ Compare branches
+   └─ Author: Don Jayamanne
+
+4. GITIGNORE
+   ├─ Language-specific .gitignore templates
+   └─ Author: CodeZombie
+
+5. GIT BLAME
+   ├─ See Git Blame information
+   └─ Author: Wade Anderson
+
+6. MERGE CONFLICT
+   ├─ Better conflict visualization
+   └─ Author: Shane Carvalho
+
+
+INSTALL ALL AT ONCE:
+────────────────────
+Ctrl/⌘ + Shift + P
+"Extensions: Show Recommended Extensions"
+Install Workspace Recommendations
+</code></pre>
+<hr />
+<h3 id="gitinintegratedterminal"><strong>Git in Integrated Terminal</strong></h3>
+<pre><code>VS Code terminal has Git commands:
+
+# Open Terminal: Ctrl/⌘ + `
+
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+$ git log --oneline
+a1b2c3d (HEAD -&gt; main) Latest commit
+b2c3d4e Previous commit
+
+$ git diff
+
+# All Git commands work!
+
+SPLIT TERMINALS:
+────────────────
+Click [+] icon in terminal
+Run different commands simultaneously
+
+Terminal 1: npm start
+Terminal 2: git status
+Terminal 3: npm test
+</code></pre>
+<hr />
+<h2 id="8bestpracticessummary">8️⃣ Best Practices Summary</h2>
+<h3 id="gitlabbestpractices"><strong>GitLab Best Practices</strong></h3>
+<pre><code>✅ DO:
+──────
+1. Use Merge Requests for all changes
+2. Write descriptive MR descriptions
+3. Add reviewers before merging
+4. Use CI/CD pipelines
+5. Tag releases
+6. Use issue boards for project management
+7. Document in wikis
+8. Use protected branches
+9. Enable merge checks
+10. Regular backups (if self-hosted)
+
+❌ DON'T:
+──────────
+1. Push directly to main/master
+2. Merge without review
+3. Ignore failing pipelines
+4. Commit sensitive data
+5. Leave stale branches
+</code></pre>
+<hr />
+<h3 id="vscodebestpractices"><strong>VS Code Best Practices</strong></h3>
+<pre><code>✅ DO:
+──────
+1. Use extensions wisely (not too many)
+2. Learn keyboard shortcuts
+3. Use workspace settings for projects
+4. Sync settings across machines
+5. Use integrated terminal
+6. Leverage IntelliSense
+7. Format code (Shift + Alt + F)
+8. Use debugging tools
+9. Customize for your workflow
+10. Keep VS Code updated
+
+❌ DON'T:
+──────────
+1. Install every extension you see
+2. Ignore performance warnings
+3. Work without Git integration
+4. Skip learning shortcuts
+5. Use default settings blindly
+</code></pre>
+<hr />
+<h2 id="quickreferencecard">🎯 Quick Reference Card</h2>
+<pre><code class="bash language-bash"># ══════════════════════════════════════════════════════════
+# GITLAB COMMANDS
+# ══════════════════════════════════════════════════════════
+
+# Clone GitLab repo
+git clone https://gitlab.com/username/project.git
+
+# Add GitLab remote
+git remote add gitlab https://gitlab.com/username/project.git
+
+# Push to GitLab
+git push gitlab main
+
+# Create MR (via web UI)
+Visit GitLab → Create Merge Request
+
+
+# ══════════════════════════════════════════════════════════
+# VS CODE SHORTCUTS
+# ══════════════════════════════════════════════════════════
+
+# General
+Ctrl/⌘ + P                Quick Open
+Ctrl/⌘ + Shift + P        Command Palette
+Ctrl/⌘ + B                Toggle Sidebar
+Ctrl/⌘ + `                Toggle Terminal
+
+# Git
+Ctrl/⌘ + Shift + G        Source Control
+Ctrl/⌘ + Enter            Commit
+Click branch name         Switch branch
+
+# Editing
+Ctrl/⌘ + /                Comment
+Alt + ↑/↓                 Move line
+Ctrl/⌘ + D                Select occurrence
+</code></pre>
+<hr />
+<p><strong>Happy Coding! 🚀</strong></p>
+<p><em>Remember: Tools are meant to help you. Learn the basics first, then gradually adopt more advanced features. Practice makes perfect!</em> ✨</p>
+      </body>
+      </html>
+    
