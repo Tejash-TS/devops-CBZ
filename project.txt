@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 hello iam tejash
 
 welcome to main branch 
+=======
+newline
+>>>>>>> tejash
